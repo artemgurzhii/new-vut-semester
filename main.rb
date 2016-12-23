@@ -32,10 +32,5 @@ def request
 		# end
 	end
 end
-every 1.minute do
-	runner "MyModel.some_process"
-	rake "my:rake:task"
-	command "/usr/bin/my_great_command"
-end
 
 request()
