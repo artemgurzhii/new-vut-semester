@@ -5,6 +5,7 @@ require 'nokogiri'
 require 'net/http'
 require 'nokogiri'
 require 'fileutils'
+require 'telegram/bot'
 
 def compare_output
 	begin
@@ -33,4 +34,16 @@ def request
 	end
 end
 
+token = '281271685:AAGD0YznrFPbh6Xgt37V_SRwg1EXUaXddzA'
+
+Telegram::Bot::Client.run(token) do |bot|
+  bot.listen do |message|
+    case message.text
+    when '/start'
+      bot.api.sendMessage(chat_id: message.chat.id, text: "Hello, #{message.from.first_name}")
+		when '/now'
+			bot.api.sendMessage(chat_id: message.chat.id, text: compare_output)
+    end
+  end
+end
 request()
