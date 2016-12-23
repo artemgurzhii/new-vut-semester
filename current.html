@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<title>Registrace pøedmìtù pro ak.r. 2016/2017</title>
+<style type="text/css">
+body,td,th,.text { 
+   margin: 0 0;
+   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+   font-size: 13px;
+   color: black;
+}
+td.but { text-align: center; vertical-align: middle; padding: 0; }
+h1 {
+   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+   font-size : 20px;
+   font-weight : bold;
+   margin-top : 0;
+   margin-bottom : 6px;
+}
+p,li { font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; }
+table { border-collapse: collapse; }
+A:link { color: #003365 } 
+A.bar:link { text-decoration: none }
+A:visited { color: #003365 }
+A:active { color: #669999 }
+A.bar:hover,A.bar:active { text-decoration: underline }
+address { color: #808080; font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: 5f5f5f; }
+input,textarea,select {
+        font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+        font-size : 13px;
+}
+form { display : inline; }
+th.menu {
+	border-left: 1px outset #0094fc;
+	border-top: 2px outset #0094fc;
+	border-bottom: 1px outset #0094fc;
+	border-right: 1px outset #0094fc;
+	font-family : Geneva, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : white;
+	font-weight : bold;
+	cursor: pointer;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.red { color: red; }
+.green { color: green; }
+.blue { color: blue; }
+.white { color: white; }
+@media print {
+        IMG.FITlogo { display: none }
+	select.noprint { display: none }
+	a.noprint { display: none }
+	address.noprint { display: none }
+	input.noprint { display: none }
+	h1.noprint { display: none }
+	p.noprint { display: none }
+	div.noprint { display: none }
+}
+</style>
+<script type="text/javascript">
+var ClockElm;
+var ClockDiff;
+var ClockMonthsCs = new Array('ledna', 'února', 'bøezna', 'dubna', 'kvìtna', 'èervna',
+'èervence', 'srpna', 'záøí', 'øíjna', 'listopadu', 'prosince');
+var ClockMonthsEn = new Array('January', 'February', 'March', 'April', 'May', 'June',
+'July', 'August', 'September', 'October', 'November', 'December');
+var ClockMonths;
+
+function ClockInit(lang)
+{
+    if (!document.getElementById) return;
+    ClockElm = document.getElementById('clock');
+    if (!ClockElm || !ClockElm.innerHTML) return;
+    ClockTm = new Date();
+    if (lang == 'en') ClockMonths = ClockMonthsEn;
+    else ClockMonths = ClockMonthsCs;
+    var srvdate = ClockElm.innerHTML;
+    var datefmt = /^(\d\d?)\. ([^ ]+) (\d{4}) (\d\d):(\d\d):(\d\d)$/;
+    var datep = datefmt.exec(srvdate);
+    if (datep) {
+	SrvClock = new Date();
+	SrvClock.setDate(datep[1]);
+	for (var i = 0; i<12; i++) {
+	    if (datep[2] == ClockMonths[i]) {
+		SrvClock.setMonth(i);
+	    }
+	}
+	SrvClock.setYear(datep[3]);
+	SrvClock.setHours(datep[4]);
+	SrvClock.setMinutes(datep[5]);
+	SrvClock.setSeconds(datep[6]);
+	ClockDiff = 1000 + SrvClock.getTime()-ClockTm.getTime();
+    } else {
+	ClockDiff = 0;
+    }
+    setInterval(UpdateClock, 1000);
+}
+
+function UpdateClock()
+{
+    var hr,min,sec,day,mon,year;
+    var ClockTm = new Date();
+
+    ClockTm.setMilliseconds(ClockDiff);
+    if (ClockTm.getFullYear) year = ClockTm.getFullYear();
+    else year = ClockTm.getYear+1900;
+    mon = ClockTm.getMonth();
+    day = ClockTm.getDate();
+    hr = ClockTm.getHours();
+    min = ClockTm.getMinutes();
+    sec = ClockTm.getSeconds();
+    ClockElm.innerHTML = day+'. '+ClockMonths[mon]+' '+year+' '+(hr<=9?'0':'')+hr+':'+(min<=9?'0':'')+min+':'+(sec<=9?'0':'')+sec; 
+}
+</script>
+<base target="_top">
+</head>
+<body onLoad="ClockInit('cs')">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr bgcolor="#0063A5"><td valign="bottom" width="100%"><img class="FITlogo" src="/common/img/fit_cz.gif" alt="Fakulta informaèních technologií" border="0" height="24"></td><td align=right><a style="color: white; text-decoration: none" href="/FIT/st/course-reg.php.en">english</a>&nbsp;</td></tr>
+</table><script type="text/javascript">
+function showHide(el)
+{
+    var bdiv=document.getElementById(el);
+    if (bdiv==null) return false;
+    if (bdiv.style.display=='block') bdiv.style.display='none';
+    else bdiv.style.display='block';
+    return false;
+}
+
+function mouseOver(el)
+{
+    el.style.borderStyle = 'inset';
+}
+
+function mouseOut(el, sol)
+{
+    if (sol) {
+        el.style.borderStyle = 'outset';
+    } else {
+        el.style.borderStyle = 'outset';
+    }
+}
+
+function mouseClick(ev, uri)
+{
+    if (typeof window.event != 'undefined') window.event.returnValue = false;
+    else ev.preventDefault();
+    window.location = uri;
+}
+</script>
+<table class=noprint width="100%" cellpadding=0 cellspacing=0 style="background-color: #0063a5; border-collapse: separate">
+<tr><th class=menu onClick="mouseClick(event, '/FIT/st/index.php.cs')" onMouseOver="mouseOver(this)" onMouseOut="mouseOut(this, 1)"><a style="font-size: 13px; font-family: Arial,sans-serif; color: white; background-color: #0063a5; text-decoration: none" href="/FIT/st/index.php.cs">home</a></th>
+<th class=menu onClick="mouseClick(event, '/FIT/st/courses.php.cs')" onMouseOver="mouseOver(this)" onMouseOut="mouseOut(this, 1)"><a style="font-size: 13px; font-family: Arial,sans-serif; color: white; background-color: #0063a5; text-decoration: none" href="/FIT/st/courses.php.cs">pøedmìty</a></th>
+<th class=menu onClick="mouseClick(event, '/FIT/st/study-v.php.cs')" onMouseOver="mouseOver(this)" onMouseOut="mouseOut(this, 1)"><a style="font-size: 13px; font-family: Arial,sans-serif; color: white; background-color: #0063a5; text-decoration: none" href="/FIT/st/study-v.php.cs">termíny</a></th>
+<th class=menu style="background-color: white; border-style: none" onClick="mouseClick(event, '/FIT/st/reg.php.cs')"><a style="font-size: 13px; font-family: Arial,sans-serif; color: #0063a6; background-color: white; text-decoration: none" href="/FIT/st/reg.php.cs">registrace</a></th>
+<th class=menu onClick="mouseClick(event, '/FIT/st/szz.php.cs')" onMouseOver="mouseOver(this)" onMouseOut="mouseOut(this, 1)"><a style="font-size: 13px; font-family: Arial,sans-serif; color: white; background-color: #0063a5; text-decoration: none" href="/FIT/st/szz.php.cs">SZZ/DP/BP</a></th>
+<th class=menu onClick="mouseClick(event, '/FIT/st/admin.php.cs')" onMouseOver="mouseOver(this)" onMouseOut="mouseOut(this, 1)"><a style="font-size: 13px; font-family: Arial,sans-serif; color: white; background-color: #0063a5; text-decoration: none" href="/FIT/st/admin.php.cs">hesla</a></th>
+<th class=menu onClick="mouseClick(event, '/FIT/st/other.php.cs')" onMouseOver="mouseOver(this)" onMouseOut="mouseOut(this, 1)"><a style="font-size: 13px; font-family: Arial,sans-serif; color: white; background-color: #0063a5; text-decoration: none" href="/FIT/st/other.php.cs">ostatní</a></th>
+<th class=menu onClick="mouseClick(event, '/FIT/st/logoff.php?logoff=1')" onMouseOver="mouseOver(this)" onMouseOut="mouseOut(this, 1)"><a style="font-size: 13px; font-family: Arial,sans-serif; color: white; background-color: #0063a5; text-decoration: none" href="/FIT/st/logoff.php?logoff=1">odhlásit</a></th>
+</tr>
+</table>
+<table cellpadding=4 width="100%" bgcolor="white" border=0 bordercolor="#808080">
+<tr valign=top><td width="90%"><h1>Registrace pøedmìtù pro ak.r. 2016/2017</h1></td>
+<td align=right nowrap><div id="clock">23. prosince 2016 18:13:17</div></td></tr></table><table cellpadding=4 width="100%" height="75%" bgcolor="white" border=0 bordercolor="#808080"><tr><td style="border-bottom: solid 1px #0063a5" valign=top><p>Login xhurzh00, <b>Hurzhii Artem</b>, 1. roèník, FIT<br>
+Ak. rok 2016/2017 è.s. 1: øádný zápis<br><b>Program:</b> <a href="https://www.fit.vutbr.cz/study/program-l.php.cs?id=5">Informaèní technologie</a>, bakaláøský, 3-letý<br><b>Obor: <a href="https://www.fit.vutbr.cz/study/branch-l.php.cs?id=1">Informaèní technologie</a></b><br><b>È.studia na VUT:</b> 1.<br><b>Pro ak. rok 2016/2017 je nabídnut <a href="http://www.fit.vutbr.cz/study/stplan-l.php.cs?id=180" target="stplan-l">studijní plán pro  1.roèník</a></b><br><b>Datum:</b> 2016-12-23 18:13:17<p align=center><b><span class="red">Registrace ukonèena</span></b><p><br><b>Roèní kreditový limit: 53</b> (za rozh.obd. abs: 0 kr./sem, SP: 4, neabs: 0, neabs P/PV: 0)<br><b>Absolvováno: 0 kr., P+PV 0 kr., V 0 kr.</b> (lze 24+4)<br>Limit V závisí na dosud neabsolvovaných/nezaregistrovaných skupinách PV s variabilním poètem kreditù.<br><b>Minimum je IBP/T+ISZ v posledním roce, jinak alespoò 30 kr., maximum 53 kr.</b><p align="center"><a href="study-a.php.cs" target="study-a">Absolvované pøedmìty</a></p><form action="/FIT/st/course-reg.php.cs" enctype="multipart/form-data" method=post name=selform onsubmit="return subdis()">
+<p style="font-size: 10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pøedmìty vypsané
+dle studijního plánu v aktuálním roèníku nebo kdykoli jsou bez
+oznaèení roèníku. Ostatní mají uveden roèník dle studijního plánu.
+<b>Zaregistrovat si musíte neabsolvované povinné pøedmìty</b>
+roèníkù ni¾¹ích a aktuálního. Nezaregistrované povinné pøedmìty
+jsou èervenì zvýraznìny ve sloupci <b>Reg</b>. Dokud si je nezaregistrujete,
+nemù¾ete si registrovat volitelné pøedmìty. Volitelné pøedmìty 
+z vy¹¹ích roèníkù si radìji ponechte na dal¹í roky studia, mohou
+navazovat a vy¾adovat znalosti pøedmìtù ni¾¹ích roèníkù (viz
+prerekvizity na stránkách pøedmìtù). Pokud jste pøedmìt  
+neabsolvovali úspì¹nì, je doplnìna poznámka
+<b>opak</b>. Pokud pøedmìt konèí a máte poslední ¹anci jej absolvovat, 
+je doplnìna poznámka <span class="red">naposled</span>. Ze skupiny PV pøedmìtù je tøeba absolvovat
+po¾adovaný minimální poèet pøedmìtù nebo kreditù. Pokud si zaregistrujete více 
+pøedmìtù z jedné skupiny PV ne¾ je po¾adováno a je to povoleno, budou 
+nadbyteèné zaøazeny jako volitelné (V).<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pokud je pøedmìt oznaèen ve sloupci
+<b>Pøihl</b> èervenì, je v pøevisu (poèet zaregistrovaných pøevy¹uje
+kapacitu pøedmìtu). Takový pøedmìt si pøi pøeregistraci nemù¾ete 
+zaregistrovat. Pokud jej máte zaregistrován a odregistrujete si jej,
+u¾ si jej zpìt pravdìpodobnì nezaregistrujete.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pokud podr¾íte my¹ nad
+za¹krtávacím tlaèítkem, zobrazí se vlevo poèet kreditù, který budete
+mít zaregistrován poté, co na tlaèítko »uknete (funguje a¾ po
+otevøení registrace v IE a Firefoxu). <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pøedmìty tìlesné výchovy a 
+sportu se na FIT neregistrují. Pøihla¹ování do tìchto pøedmìtù probíhá 
+podle pokynù CESA obvykle na zaèátku semestru. Jazyky BANx se registrují postupnì od poèáteèního dle rozøazovacího testu a¾ po BAN4.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Registrace nabídnuté mno¾iny
+pøedmìtù dle tohoto formuláøe nezaruèuje automaticky správnou volbu
+skladby pøedmìtù nutných pro úspì¹né ukonèení studia dle <a
+href="http://www.fit.vutbr.cz/study/"
+target="eysselt"><b>podmínek daného studijního programu</b></a>.
+V&nbsp;pøípadì pochybnosti si ovìøte správnost zvolené kombinace
+pøedmìtù u studijního poradce.</p><div align=center><b><a href="faqreg.php" target="faqreg">FAQ k registraènímu formuláøi</a></b></div><p><b>Skupiny PV:</b> PVT: min. 1
+<script type="text/javascript">
+function showkron(el, val)
+{
+}
+function showkroff(el, val)
+{
+}
+function check(el, val)
+{
+    return true;
+}
+</script>
+<p><table border=1 cellpadding=2 cellspacing=0 bordercolor="#999" width="100%"><tr bgcolor="#ADD8E6"><th colspan=10 align=left><font size=4><b>Semestr zimní</b></font></th></tr><tr bgcolor="#ADD8E6"><th>Zkr</th><th>Pov</th><th>Kr</th><th>Název</th><th>Uk</th><th>Fak.</th><th>Max</th><th>Pøihl</th><th>Reg.</th><th>Poøadí</th></tr>
+<tr valign=top bgcolor="#ffdead"><th>IDA</th><th>P</th><td>7</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11431" target="course-l">Diskrétní matematika</a></b></td><td>Zk</td><td>FEKT</td><td align=right>700</td><td align=right>601</td><td class="but"><img src="/images/checkboxs.gif" width=13 height=13 alt="[X]"><input type=hidden value=1 name="course_11431"></td><td align=right>zapsáno<br>auto</td></tr>
+<tr valign=top bgcolor="#ffdead"><th>IEL</th><th>P</th><td>6</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11435" target="course-l">Elektronika pro informaèní technologie</a></b></td><td>ZáZk</td><td>FIT</td><td align=right>750</td><td align=right>622</td><td class="but"><img src="/images/checkboxs.gif" width=13 height=13 alt="[X]"><input type=hidden value=1 name="course_11435"></td><td align=right>zapsáno<br>auto</td></tr>
+<tr valign=top bgcolor="#ffdead"><th>IUS</th><th>P</th><td>5</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11491" target="course-l">Úvod do softwarového in¾enýrství</a></b></td><td>ZáZk</td><td>FIT</td><td align=right>750</td><td align=right>647</td><td class="but"><img src="/images/checkboxs.gif" width=13 height=13 alt="[X]"><input type=hidden value=1 name="course_11491"></td><td align=right>zapsáno<br>auto</td></tr>
+<tr valign=top bgcolor="#ffdead"><th>IZP</th><th>P</th><td>7</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11499" target="course-l">Základy programování</a></b></td><td>ZáZk</td><td>FIT</td><td align=right>750</td><td align=right>611</td><td class="but"><img src="/images/checkboxs.gif" width=13 height=13 alt="[X]"><input type=hidden value=1 name="course_11499"></td><td align=right>zapsáno<br>auto</td></tr>
+<tr><td colspan=10>&nbsp;</td></tr><tr valign=top bgcolor="#f7f7af"><th>IACH</th><th>V</th><td>3</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11750" target="course-l">Architektura 20. století</a></b> (hum.)</td><td>Zk</td><td>FAVU</td><td align=right>10</td><td align=right>3</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>ICUZ</th><th>V</th><td>3</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11705" target="course-l">Èeské umìní 1. poloviny 20. století v souvislostech - zimní</a></b> (hum.)</td><td>Zk</td><td>FAVU</td><td align=right>10</td><td align=right>0</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>FIT</th><th>V</th><td>3</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11392" target="course-l">Dìjiny a filozofie techniky</a></b> (hum.)</td><td>Zá</td><td>ICV</td><td align=right>80</td><td align=right>79</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>IDF1</th><th>V</th><td>3</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11702" target="course-l">Dìjiny a kontexty fotografie 1</a></b> (hum.)</td><td>Zk</td><td>FAVU</td><td align=right>10</td><td align=right>0</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>ID2Z</th><th>V</th><td>3</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=12040" target="course-l">Dìjiny designu 2 - zimní</a></b> (hum.)</td><td>Zk</td><td>FAVU</td><td align=right>15</td><td align=right>0</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>IFS</th><th>V</th><td>2</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11440" target="course-l">Fyzikální semináø</a></b></td><td>Zá</td><td>FEKT</td><td align=right>200</td><td align=right>104</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>IVG</th><th>V</th><td>1</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11492" target="course-l">Informaèní výchova a gramotnost</a></b></td><td>Zá</td><td>FIT</td><td align=right>650</td><td align=right>149</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>HKO</th><th>V</th><td>3</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11409" target="course-l">Komunikaèní dovednosti</a></b> (hum.)</td><td>Zá</td><td>FIT</td><td align=right>20</td><td align=right>18</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>HKA</th><th>V</th><td>3</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11407" target="course-l">Konflikty a asertivita</a></b> (hum.)</td><td>Zá</td><td>FIT</td><td align=right>20</td><td align=right bgcolor="#ff8080">20</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>ISM</th><th>V</th><td>2</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11479" target="course-l">Matematický semináø</a></b></td><td>Zá</td><td>FEKT</td><td align=right>400</td><td align=right>333</td><td class="but"><img src="/images/checkboxs.gif" width=13 height=13 alt="[X]"><input type=hidden value=1 name="course_11479"></td><td align=right>zapsáno</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>ISC</th><th>V</th><td>2</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11475" target="course-l">Poèítaèový semináø</a></b></td><td>Zá</td><td>FIT</td><td align=right>180</td><td align=right>144</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>PRM</th><th>V</th><td>3</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11611" target="course-l">Právní minimum</a></b> (hum.)</td><td>Zá</td><td>ICV</td><td align=right>80</td><td align=right>76</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>HPR</th><th>V</th><td>3</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11413" target="course-l">Prezentaèní dovednosti</a></b> (hum.)</td><td>Zá</td><td>FIT</td><td align=right>20</td><td align=right>16</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>HPO</th><th>V</th><td>3</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11411" target="course-l">Psychologie osobnosti</a></b> (hum.)</td><td>Zá</td><td>FIT</td><td align=right>40</td><td align=right>39</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>RET</th><th>V</th><td>3</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11625" target="course-l">Rétorika</a></b> (hum.)</td><td>Zá</td><td>ICV</td><td align=right>80</td><td align=right bgcolor="#ff8080">80</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr valign=top bgcolor="#f7f7af"><th>HVR</th><th>V</th><td>3</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11416" target="course-l">Vedení a øízení lidí</a></b> (hum.)</td><td>Zá</td><td>FIT</td><td align=right>20</td><td align=right bgcolor="#ff8080">20</td><td class="but"><img src="/images/checkbox.gif" width=13 height=13 alt="[ ]"></td><td>&nbsp;</td></tr>
+<tr><td colspan=10>&nbsp;</td></tr>
+<tr bgcolor="#ADD8E6"><th colspan=10 align=left><font size=4><b>Semestr letní</b></font></th></tr><tr bgcolor="#ADD8E6"><th>Zkr</th><th>Pov</th><th>Kr</th><th>Název</th><th>Uk</th><th>Fak.</th><th>Max</th><th>Pøihl</th><th>Reg.</th><th>Poøadí</th></tr>
+<tr valign=top bgcolor="#ffdead"><th>IMA</th><th>P</th><td>6</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11450" target="course-l">Matematická analýza</a></b></td><td>Zk</td><td>FEKT</td><td align=right>800</td><td align=right>635</td><td class="but"><img src="/images/checkboxs.gif" width=13 height=13 alt="[X]"><input type=hidden value=1 name="course_11450"></td><td align=right>zapsáno<br>auto</td></tr>
+<tr valign=top bgcolor="#ffdead"><th>INC</th><th>P</th><td>5</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11455" target="course-l">Návrh èíslicových systémù</a></b></td><td>ZáZk</td><td>FIT</td><td align=right>800</td><td align=right>619</td><td class="but"><img src="/images/checkboxs.gif" width=13 height=13 alt="[X]"><input type=hidden value=1 name="course_11455"></td><td align=right>zapsáno<br>auto</td></tr>
+<tr valign=top bgcolor="#ffdead"><th>IOS</th><th>P</th><td>5</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11462" target="course-l">Operaèní systémy</a></b></td><td>ZáZk</td><td>FIT</td><td align=right>999</td><td align=right>701</td><td class="but"><img src="/images/checkboxs.gif" width=13 height=13 alt="[X]"><input type=hidden value=1 name="course_11462"></td><td align=right>zapsáno<br>auto</td></tr>
+<tr valign=top bgcolor="#ffdead"><th>ISU</th><th>P</th><td>6</td><td><b><a class=bar href="https://www.fit.vutbr.cz/study/course-l.php.cs?id=11420" target="course-l">Programování na strojové úrovni</a></b></td><td>ZáZk</td><td>FIT</td><td align=right>900</td><td align=right>625</td><td class="but"><img src="/images/checkboxs.gif" width=13 height=13 alt="[X]"><input type=hidden value=1 name="course_11420"></td><td align=right>zapsáno<br>auto</td></tr>
+</table>
+<table>
+<tr align=left><th valign=top>Pov:</th><td>P - povinný, PVx - povinnì volitelný ze skupiny x, V - volitelný (Vx=pøevedený ze skupiny PVx), D - doporuèený, O - ostatní</td></tr></table>
+<p><b>Celkem zaregistrováno kreditù:</b>
+<p><table cellpadding=4 width="100%">
+<tr><th>P</th><td align=center bgcolor="#ffdead" style="width: 30px; border: 2px solid black">47</td>
+<th>PV</th><td align=center bgcolor="#ffdead" style="width: 30px; border: 2px solid black">0</td>
+<th>V</th><td align=center bgcolor="#f7f7af" style="width: 30px; border: 2px solid black">2</td>
+<th>D</th><td align=center bgcolor="#aff7af" style="width: 30px; border: 2px solid black">0</td>
+<th>O</th><td align=center style="width: 30px; border: 2px solid black">0</td>
+<th>Celkem</th><td align=center style="width: 30px; border: 2px solid black" id="celksuma">49</td></tr>
+</table>
+
+<script type="text/javascript">
+var st_suma = 49;
+</script>
+<p align=center><input type="button" name="nepovoleno" value="Ulo¾it zmìny (registrace není otevøena)">
+</form><p align=center><a href="course-reg-z.php.cs" target="course-reg-z">Registraèní list v ak.r. 2016/2017</a><hr size="1" color="#0063A5">
+<address>&copy; Fakulta informaèních technologií VUT, Bo¾etìchova 2, 612 66 Brno<br>
+Tel.: 54114 1144, Fax: 54114 1270<br>Pøipomínky zasílejte na adresu <a href="mailto:lampa@fit.vutbr.cz">lampa@fit.vutbr.cz</a>
+</address>
+</td>
+</tr>
+</table>
+</body>
+</html>
