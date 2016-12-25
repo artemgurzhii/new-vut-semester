@@ -6,6 +6,7 @@ require './lib/message_responder'
 require './lib/app_configurator'
 
 config = AppConfigurator.new
+config.configure
 
 token = config.get_token
 logger = config.get_logger
