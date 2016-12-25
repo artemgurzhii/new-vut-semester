@@ -4,7 +4,8 @@ require './lib/yaml_parser'
 
 class AppConfigurator
   def configure
-    setup_database
+    # setup_database
+		puts 'Test'
   end
 
   def get_token
