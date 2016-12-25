@@ -5,7 +5,6 @@ require './lib/yaml_parser'
 class MessageResponder
   attr_reader :message
   attr_reader :bot
-  attr_reader :user
 
   def initialize(options)
     @bot = options[:bot]

@@ -4,6 +4,7 @@ require 'telegram/bot'
 
 require './lib/message_responder'
 require './lib/app_configurator'
+require './lib/request'
 
 config = AppConfigurator.new
 
@@ -13,8 +14,16 @@ logger = config.get_logger
 logger.debug 'Starting telegram bot'
 
 Telegram::Bot::Client.run(token) do |bot|
+	# unless request.between?(940, 963)
+	if request.between?(940, 963)
+		bot.api.send_message(chat_id: 105879286, text: 'text')
+	end
+
+	# 184164761
+
   bot.listen do |message|
-    options = {bot: bot, message: message}
+		puts message.chat.id
+		options = {bot: bot, message: message}
 
     logger.debug "@#{message.from.username}: #{message.text}"
     MessageResponder.new(options).respond
