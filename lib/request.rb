@@ -1,8 +1,6 @@
-#!/usr/bin/env ruby
-
 require 'openssl'
 require 'net/http'
-require_relative 'yaml_parser'
+require './lib/yaml_parser'
 
 # Прокси с разных айпишников
 def request

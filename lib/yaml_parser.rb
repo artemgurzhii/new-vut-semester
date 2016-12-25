@@ -1,9 +1,7 @@
-#!/usr/bin/env ruby
-
 require 'yaml'
 
 module Configurations
-	config_file = YAML::load_file('config/config.yml')
+	config_file = YAML::load(IO.read('config/config.yml'))
 
 	TELEGRAM_TOKEN = config_file['data']['telegram']['token']
 	LOGIN = config_file['data']['users']['hurzhii']['login']
