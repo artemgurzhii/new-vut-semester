@@ -20,7 +20,6 @@ Telegram::Bot::Client.run(Configurations::TELEGRAM_TOKEN) do |bot|
 			end
 
 		when '/exams'
-			bot.api.sendMessage(chat_id: message.chat.id, text: request == 953)
 			exam_result = rand(10) > 5 ? 'pass' : 'fail'
 			bot.api.sendMessage(chat_id: message.chat.id, text: "Hi #{message.from.first_name}! I think you will #{exam_result} this test.")
 
