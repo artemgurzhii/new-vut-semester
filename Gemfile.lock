@@ -13,10 +13,7 @@ GEM
     faraday (0.10.0)
       multipart-post (>= 1.2, < 3)
     ice_nine (0.11.2)
-    mini_portile2 (2.1.0)
     multipart-post (2.0.0)
-    nokogiri (1.6.8.1)
-      mini_portile2 (~> 2.1.0)
     openssl (2.0.2)
     telegram-bot-ruby (0.7.1)
       faraday
@@ -32,7 +29,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  nokogiri
   openssl
   telegram-bot-ruby
 
