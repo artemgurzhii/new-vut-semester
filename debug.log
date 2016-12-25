@@ -1,4 +1,0 @@
-D, [2016-12-25T22:31:56.314283 #28513] DEBUG -- :   [1m[36mUser Load (5.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", 105879286], ["LIMIT", 1]]
-D, [2016-12-25T22:31:56.361863 #28513] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
-D, [2016-12-25T22:31:56.363928 #28513] DEBUG -- :   [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("uid") VALUES ($1) RETURNING "id"[0m  [["uid", 105879286]]
-D, [2016-12-25T22:31:56.364898 #28513] DEBUG -- :   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
