@@ -1,48 +1,28 @@
 #!/usr/bin/env ruby
 
-require 'openssl'
-require 'nokogiri'
-require 'net/http'
-require 'nokogiri'
-require 'fileutils'
 require 'telegram/bot'
+require_relative 'lib/compare'
+require_relative 'lib/request'
+require_relative 'lib/yaml_parser'
 
-def compare_output
-	begin
-		x = FileUtils.compare_file('index.html', 'current.html')
-		puts x
-	rescue => err
-    puts "Exception: #{err}"
-    err
-	end
-end
+# doc = Nokogiri::HTML(open(url))
+# doc.xpath('.//*[class="red"]')
 
-def request
-	uri = URI('https://wis.fit.vutbr.cz/FIT/st/course-reg.php.cs')
-	Net::HTTP.start(uri.host, uri.port,
-	  :use_ssl => uri.scheme == 'https',
-	  :verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
-
-	  request = Net::HTTP::Get.new uri.request_uri
-	  request.basic_auth 'xhurzh00', 'pumduj6are'
-	  response = http.request request
-		# puts response.body
-		File.write('current.html', response.body)
-		# unless compare_output()
-		# 	send_message('')
-		# end
-	end
-end
-
-token = '281271685:AAGD0YznrFPbh6Xgt37V_SRwg1EXUaXddzA'
-
-Telegram::Bot::Client.run(token) do |bot|
+Telegram::Bot::Client.run(Configurations::TELEGRAM_TOKEN) do |bot|
   bot.listen do |message|
     case message.text
     when '/start'
       bot.api.sendMessage(chat_id: message.chat.id, text: "Hello, #{message.from.first_name}")
 		when '/now'
 			bot.api.sendMessage(chat_id: message.chat.id, text: compare_output)
+		when '/help'
+			bot.api.sendMessage(chat_id: message.chat.id, text: "Hi, I'm bot which will help you not to expelled from the university. I'm checking VUT website, and as soon you can register, I will reming you. You are able to use next commands:
+				\t/now - get current registration status
+				\t/exams - my opinion on your test results
+				\t/help - read info one more time")
+		when '/exams'
+			exam_result = rand(10) > 5 ? 'pass' : 'fail'
+			bot.api.sendMessage(chat_id: message.chat.id, text: "Hi #{message.from.first_name}! I think you will #{exam_result} this test.")
     end
   end
 end
