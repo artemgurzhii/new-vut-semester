@@ -33,7 +33,6 @@ class MessageResponder
   end
 
   private
-
 	  def on regex, &block
 	    regex =~ message.text
 
