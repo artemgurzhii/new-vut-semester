@@ -2,7 +2,6 @@
 
 require 'openssl'
 require 'net/http'
-require 'fileutils'
 require 'nokogiri'
 require_relative 'yaml_parser'
 
@@ -16,13 +15,13 @@ def request
 	  request = Net::HTTP::Get.new uri.request_uri
 	  request.basic_auth Configurations::LOGIN, Configurations::PASSWORD
 	  response = http.request request
-		# puts response.body
-		File.write('current.html', response.body)
-		# unless compare_output()
-		# 	send_message('')
-		# end
-		if condition
 
-		end
+		# doc = Nokogiri::HTML(open(Configurations::URL))
+		# puts doc.xpath('//*[@class="coprint"]')
+		puts response.body.xpath('//*[@class="red"]')
+		puts response.body
 	end
 end
+
+# doc = Nokogiri::HTML(open(url))
+# response.body.xpath('//*[@class="red"]')
