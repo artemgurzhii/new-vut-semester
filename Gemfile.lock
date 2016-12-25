@@ -14,7 +14,6 @@ GEM
       multipart-post (>= 1.2, < 3)
     ice_nine (0.11.2)
     multipart-post (2.0.0)
-    openssl (2.0.2)
     telegram-bot-ruby (0.7.1)
       faraday
       virtus
@@ -29,7 +28,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  openssl
   telegram-bot-ruby
 
 BUNDLED WITH
