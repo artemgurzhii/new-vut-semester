@@ -1,5 +1,5 @@
 require 'logger'
-require './lib/database_connector'
+# require './lib/database_connector'
 require './lib/yaml_parser'
 
 class AppConfigurator
@@ -16,8 +16,8 @@ class AppConfigurator
     Logger.new(STDOUT, Logger::DEBUG)
   end
 
-  private
-	  def setup_database
-	    DatabaseConnector.establish_connection
-	  end
+  # private
+	#   def setup_database
+	#     DatabaseConnector.establish_connection
+	#   end
 end
