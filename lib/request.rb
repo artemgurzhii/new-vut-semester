@@ -2,7 +2,6 @@
 
 require 'openssl'
 require 'net/http'
-require 'nokogiri'
 require_relative 'yaml_parser'
 
 # Прокси с разных айпишников
@@ -16,12 +15,6 @@ def request
 	  request.basic_auth Configurations::LOGIN, Configurations::PASSWORD
 	  response = http.request request
 
-		# doc = Nokogiri::HTML(open(Configurations::URL))
-		# puts doc.xpath('//*[@class="coprint"]')
-		puts response.body.xpath('//*[@class="red"]')
-		puts response.body
+		return response.body.scan(/</).count
 	end
 end
-
-# doc = Nokogiri::HTML(open(url))
-# response.body.xpath('//*[@class="red"]')
