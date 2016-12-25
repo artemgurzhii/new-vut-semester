@@ -7,9 +7,6 @@ require_relative 'lib/yaml_parser'
 Telegram::Bot::Client.run(Configurations::TELEGRAM_TOKEN) do |bot|
   bot.listen do |message|
     case message.text
-    when '/start'
-      bot.api.sendMessage(chat_id: message.chat.id, text: "Hello, #{message.from.first_name}")
-
 		when '/now'
 			if request == 953
 				bot.api.sendMessage(chat_id: message.chat.id, text: "Nothing has changed")
