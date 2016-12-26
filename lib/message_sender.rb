@@ -21,17 +21,13 @@ class MessageSender
       bot.api.send_message(chat_id: chat.id, text: text, reply_markup: reply_markup)
     else
       bot.api.send_message(chat_id: chat.id, text: text)
-      puts chat.id
     end
 
     logger.debug "sending '#{text}' to #{chat.username}"
   end
 
   private
-
-  def reply_markup
-    if answers
-      ReplyMarkupFormatter.new(answers).get_markup
-    end
-  end
+	  def reply_markup
+    	ReplyMarkupFormatter.new(answers).get_markup if answers
+	  end
 end
