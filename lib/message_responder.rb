@@ -27,6 +27,10 @@ class MessageResponder
 		on /^\/help/ do
 			help
 		end
+
+		on /^\/nodes/ do
+			nodes
+		end
   end
 
   private
@@ -46,17 +50,21 @@ class MessageResponder
 	  end
 
 		def greeting
-	    answer_with_message "Привет, меня зовут NewVutSemesterBot, и я помогу вам не вылететь из вуза!"
+	    answer_with_message 'Привет, меня зовут NewVutSemesterBot, и я помогу вам не вылететь из вуза!'
 	  end
 
 		def current_registration_status
 			if request == 953
-				answer_with_message "Регистрация еще не началась"
+				answer_with_message 'Регистрация еще не началась'
 			elsif request.between?(940, 963)
-				answer_with_message "Я заметил небольшие изменения, но вероятнее всего регистрация еще не началась."
+				answer_with_message 'Я заметил небольшие изменения, но вероятнее всего регистрация еще не началась.'
 			else
 				answer_with_message "Быстро перейдите на #{Configurations::URL}, регистрация скорее всего началась!!!"
 			end
+		end
+
+		def nodes
+		  answer_with_message "Количество дом элементов раньше было 953. Сейчас их #{request}"
 		end
 
 		def exams
