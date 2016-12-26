@@ -14,7 +14,6 @@ logger = config.get_logger
 
 logger.debug 'Starting telegram bot'
 
-# current node elements number
 Telegram::Bot::Client.run(token) do |bot|
 	# 184164761
 	# 105879286
@@ -26,7 +25,7 @@ Telegram::Bot::Client.run(token) do |bot|
 					bot.api.send_message(chat_id: '-184164761', text: "Быстро перейдите на #{Configurations::URL}, регистрация скорее всего началась!!!")
 				end
 			end
-			sleep(5)
+			sleep(60)
 		end
 	}
 
