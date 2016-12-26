@@ -15,8 +15,8 @@ logger = config.get_logger
 logger.debug 'Starting telegram bot'
 
 Telegram::Bot::Client.run(token) do |bot|
-	unless request.between?(940, 963)
-		bot.api.send_message(chat_id: 105879286, text: "Быстро перейдите на #{Configurations::URL}, регистрация скорее всего началась!!!")
+	if request.between?(940, 963)
+		bot.api.send_message(chat_id: 184164761, text: "Быстро перейдите на #{Configurations::URL}, регистрация скорее всего началась!!!")
 	end
 
 	# 105879286
