@@ -1,12 +1,13 @@
 require 'logger'
 require './lib/yaml_parser'
 
+# setting up app by providing telegram token and logger settings
 class AppConfigurator
-	def get_token
-		Configurations::TELEGRAM_TOKEN
-	end
+  def token
+    Configurations::TELEGRAM_TOKEN
+  end
 
-  def get_logger
+  def logger
     Logger.new(STDOUT, Logger::DEBUG)
   end
 end
