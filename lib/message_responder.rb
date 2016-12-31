@@ -1,6 +1,7 @@
+# require 'English'
 require './lib/message_sender'
-require './lib/request'
 require './lib/yaml_parser'
+require './lib/request'
 
 # create new message based on the received message
 # @return new message
@@ -37,20 +38,9 @@ class MessageResponder
   private
 
   def on(regex, &block)
-    regex =~ message.text
-    if $~ && block.arity.zero?
-      yield
-      # case block.arity
-      # when 0
-      #   yield
-      # when 1
-      #   puts 2
-      #   yield Regexp.last_match(1)
-      # when 2
-      #   puts 3
-      #   yield Regexp.last_match(1), Regexp.last_match(2)
-      # end
-    end
+    # regex =~ message.text
+    # yield if $LAST_MATCH_INFO && block.arity.zero?
+    yield if regex =~ message.text && block.arity.zero?
   end
 
   def start
@@ -64,16 +54,11 @@ class MessageResponder
     nodes = Data.request
     if nodes == 953
       answer_with_message('Регистрация еще не началась')
-    elsif nodes.between?(940, 963)
-      answer_with_message(
-        'Я заметил небольшие изменения, но вероятнее всего ' \
-        'регистрация еще не началась.'
-        )
     else
       answer_with_message(
         "Быстро перейдите на #{Configurations::URL}" \
         ', регистрация скорее всего началась!!!'
-        )
+      )
     end
   end
 
@@ -91,19 +76,7 @@ class MessageResponder
   end
 
   def help
-    answer_with_message("Привет, я бот который поможет тебе не вылететь из
-     вуза. Я проверяю каждые 5 минут сайт VUT, и как только там появится
-     регистрация на следующий семестр, я вам напишу. Вы можете использовать
-      следующие команды:
-      \t/now - получить нынешний статус регистрации
-      \t/exams - мое мнение на то, как вы сдадите экзамены
-      \t/help - прочитать информацию еще раз
-      \t/nodes - я сравниваю количество дом елементов которое было раньше и
-их количество сейчас. Эта команда покажет вам сколько их на данный
-момент
-      \t/start - получить информацию обо мне
-В будущем, я планирую стать умнее и иметь возможность отвечать на все ваши" \
-'вопросы связанные с учебой в этом вузе.')
+    answer_with_message(Configurations::HELP)
   end
 
   def answer_with_message(text)

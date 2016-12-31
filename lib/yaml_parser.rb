@@ -8,4 +8,5 @@ module Configurations
   PASSWORD = config_file['data']['users']['hurzhii']['password']
   LOGIN = config_file['data']['users']['hurzhii']['login']
   URL = config_file['data']['url']
+  HELP = config_file['data']['help']
 end

@@ -1,39 +1,34 @@
 #!/usr/bin/env ruby
 
 require 'telegram/bot'
-
 require './lib/message_responder'
 require './lib/app_configurator'
-require './lib/yaml_parser'
 require './lib/request'
 
 config = AppConfigurator.new
 
-token = config.token
-logger = config.logger
+config.logger.debug 'Starting telegram bot'
 
-logger.debug 'Starting telegram bot'
-
-Telegram::Bot::Client.run(token) do |bot|
-	# 184164761
-	# 105879286
-
-	Thread.new {
-		loop do
-			unless request.between?(943, 963)
-				5.times do
-					bot.api.send_message(chat_id: '-184164761', text: "Быстро перейдите на #{Configurations::URL}, регистрация скорее всего началась!!!")
-				end
-			end
-			sleep(60)
-		end
-	}
-
-	bot.listen do |message|
-		# puts message.chat.id
-
-    logger.debug "@#{message.from.username}: #{message.text}"
-    MessageResponder.new(bot: bot, message: message).respond
+Telegram::Bot::Client.run(config.token) do |bot|
+  # -184_164_761
+  #  105_879_286
+  Thread.new do
+    loop do
+      unless Data.request.between?(943, 963)
+        5.times do
+          bot.api.send_message(
+            chat_id: '-184164761',
+            text: "Быстро перейдите на #{Configurations::URL}," \
+            ' регистрация скорее всего началась!!!'
+          )
+        end
+      end
+      sleep(60)
+    end
   end
 
+  bot.listen do |message|
+    config.logger.debug "@#{message.from.username}: #{message.text}"
+    MessageResponder.new(bot: bot, message: message).respond
+  end
 end
