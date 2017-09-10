@@ -1,10 +1,8 @@
-# require 'English'
 require './lib/message_sender'
 require './lib/yaml_parser'
 require './lib/request'
 
 # create new message based on the received message
-# @return new message
 class MessageResponder
   attr_reader :message, :bot
 
@@ -37,49 +35,47 @@ class MessageResponder
 
   private
 
-  def on(regex, &block)
-    # regex =~ message.text
-    # yield if $LAST_MATCH_INFO && block.arity.zero?
-    yield if regex =~ message.text && block.arity.zero?
-  end
+    def on(regex, &block)
+      yield if regex =~ message.text && block.arity.zero?
+    end
 
-  def start
-    answer_with_message(
-      'Привет, меня зовут NewVutSemesterBot,' \
-      'и я помогу вам не вылететь из вуза!'
-    )
-  end
-
-  def now
-    nodes = Data.request
-    if nodes == 953
-      answer_with_message('Регистрация еще не началась')
-    else
+    def start
       answer_with_message(
-        "Быстро перейдите на #{Configurations::URL}" \
-        ', регистрация скорее всего началась!!!'
+        'Привет, меня зовут NewVutSemesterBot,' \
+        'и я помогу вам не вылететь из вуза!'
       )
     end
-  end
 
-  def nodes
-    answer_with_message(
-      "Количество дом элементов раньше было 953. Сейчас их #{Data.request}"
-    )
-  end
+    def now
+      nodes = Data.request
+      if nodes == 953
+        answer_with_message('Регистрация еще не началась')
+      else
+        answer_with_message(
+          "Быстро перейдите на #{Config::URL}" \
+          ', регистрация скорее всего началась!!!'
+        )
+      end
+    end
 
-  def exams
-    exam_result = rand(2) > 1 ? 'сдашь' : 'завалишь'
-    answer_with_message(
-      "Привет #{message.from.first_name}! Я думаю ты #{exam_result} этот тест."
-    )
-  end
+    def nodes
+      answer_with_message(
+        "Количество дом элементов раньше было 953. Сейчас их #{Data.request}"
+      )
+    end
 
-  def help
-    answer_with_message(Configurations::HELP)
-  end
+    def exams
+      exam_result = rand(2) > 1 ? 'сдашь' : 'завалишь'
+      answer_with_message(
+        "Привет #{message.from.first_name}! Я думаю ты #{exam_result} этот тест."
+      )
+    end
 
-  def answer_with_message(text)
-    MessageSender.new(bot: bot, chat: message.chat, text: text).send
-  end
+    def help
+      answer_with_message(Config::HELP)
+    end
+
+    def answer_with_message(text)
+      MessageSender.new(bot: bot, chat: message.chat, text: text).send
+    end
 end

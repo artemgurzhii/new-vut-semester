@@ -10,18 +10,13 @@ config = AppConfigurator.new
 config.logger.debug 'Starting telegram bot'
 
 Telegram::Bot::Client.run(config.token) do |bot|
-  # -184_164_761
-  #  105_879_286
   Thread.new do
     loop do
       unless Data.request.between?(943, 963)
-        5.times do
-          bot.api.send_message(
-            chat_id: '-184164761',
-            text: "Быстро перейдите на #{Configurations::URL}," \
-            ' регистрация скорее всего началась!!!'
-          )
-        end
+        bot.api.send_message(
+          chat_id: Config::CHAT_ID,
+          text: "Быстро перейдите на #{Config::URL}, регистрация скорее всего началась!!!"
+        )
       end
       sleep(60)
     end

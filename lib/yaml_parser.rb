@@ -1,12 +1,14 @@
+require 'dotenv/load'
 require 'yaml'
 
-# Config telegram token url and password with login
-module Configurations
-  config_file = YAML.load(IO.read('config/config.yml'))
+# Load data from config file and set variables
+module Config
+  config = YAML.safe_load(IO.read('config/config.yml'))['messages']
 
-  TELEGRAM_TOKEN = config_file['data']['telegram']['token']
-  PASSWORD = config_file['data']['users']['hurzhii']['password']
-  LOGIN = config_file['data']['users']['hurzhii']['login']
-  URL = config_file['data']['url']
-  HELP = config_file['data']['help']
+  TELEGRAM_TOKEN = ENV['TELEGRAM_TOKEN']
+  PASSWORD = ENV['LOGIN_PASSWORD']
+  LOGIN = ENV['LOGIN_NAME']
+  CHAT_ID = ENV['CHAT_ID']
+  URL = ENV['URL']
+  HELP = config['help']
 end

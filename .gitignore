@@ -1,0 +1,6 @@
+# Logs
+debug.log
+
+# dotenv environment variables file(s)
+.env
+.env.*
