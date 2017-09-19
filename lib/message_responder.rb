@@ -12,23 +12,23 @@ class MessageResponder
   end
 
   def respond
-    on(/\/start/) do
+    on(/^\/start$/) do
       start
     end
 
-    on(/\/now/) do
+    on(/^\/now$/) do
       now
     end
 
-    on(/\/exams/) do
+    on(/^\/exams$/) do
       exams
     end
 
-    on(/\/help/) do
+    on(/^\/help$/) do
       help
     end
 
-    on(/\/nodes/) do
+    on(/^\/nodes$/) do
       nodes
     end
   end
